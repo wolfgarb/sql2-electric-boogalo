@@ -10,7 +10,7 @@ A command-line application that utilizes the MySQL database to organize employee
 
 Here is how the application appears and functions.
 
-<img src='' />
+<img src='assets\sql-preview.gif' />
 
 The full walk-through video can be found [here!]()
 
@@ -36,10 +36,10 @@ npm install dotenv
 npm install mysql2
 ```
 
-Start the server from the command line and follow the prompts:
+Start the application from the command line and follow the prompts:
 
 ```bash
-npm start
+node index
 ```
 
 ## Database Schema

@@ -54,8 +54,8 @@ db.connect((err) => {
   promptUser();
 });
 
-async function promptUser() {
-  await inquirer
+function promptUser() {
+  inquirer
     .prompt([
       {
         type: 'list',
@@ -68,38 +68,28 @@ async function promptUser() {
           'Add department',
           'Add role',
           'Add employee',
-          'Update employee',
+          'Update employee role',
           'Exit',
         ],
       },
     ])
     .then((response) => {
-      const { directory } = response;
-      switch (directory) {
-        case 'View all departments':
-          viewDeps();
-          break;
-        case 'View all roles':
-          viewRoles();
-          break;
-        case 'View all employees':
-          viewEmps();
-          break;
-        case 'Add department':
-          addDep();
-          break;
-        case 'Add role':
-          addRole();
-          break;
-        case 'Add employee':
-          addEmp();
-          break;
-        case 'Update employee':
-          updateRole();
-          break;
-        case 'Exit':
-          exit();
-          break;
+      if (response.directory === 'View all departments') {
+        viewDeps();
+      } else if (response.directory === 'View all roles') {
+        viewRoles();
+      } else if (response.directory === 'View all employees') {
+        viewEmps();
+      } else if (response.directory === 'Add department') {
+        addDep();
+      } else if (response.directory === 'Add role') {
+        addRole();
+      } else if (response.directory === 'Add employee') {
+        addEmp();
+      } else if (response.directory === 'Update employee role') {
+        updateRole();
+      } else if (response.directory === 'Exit') {
+        exit();
       }
     });
 }
@@ -145,12 +135,10 @@ async function addDep() {
       db.query(`INSERT INTO departments SET ?`, {
         dep_name: answer.depName,
       });
-      console.log('Database updated');
-    }),
-    console.log(`
-    ==================================
-    `),
-    promptUser();
+    });
+  console.log(`Database updated
+      =============================`);
+  promptUser();
 }
 
 async function addRole() {
@@ -177,17 +165,15 @@ async function addRole() {
       if (answer === 'Other') {
         addDep();
       }
-      db.query(`INSERT INTO roles SET ? ? ?`, {
-        title: answer.roleName,
-        salary: answer.roleSalary,
-        department_id: answer.roleDep,
+      const sql = `INSERT INTO roles (title, salary, department_id) VALUES (?, ?, ?)`;
+      const params = [answer.roleName, answer.roleSalary, answer.roleDep];
+      db.query(sql, params, (err) => {
+        if (err) throw err;
+        console.log(`Database updated
+      =============================`);
+        promptUser();
       });
-      console.log('Database updated');
     });
-  console.log(`
-    ==================================
-    `);
-  promptUser();
 }
 
 async function addEmp() {
@@ -219,18 +205,20 @@ async function addEmp() {
       if (answer.empRole === 'Other') {
         addRole();
       }
-      db.query(`INSERT INTO employees SET ? ? ? ?`, {
-        first_name: answer.firstName,
-        last_name: answer.lastName,
-        role_id: answer.empRole,
-        manager_id: answer.empMgr,
+      const sql = `INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)`;
+      const params = [
+        answer.firstName,
+        answer.lastName,
+        answer.empRole,
+        answer.empMgr,
+      ];
+      db.query(sql, params, (err) => {
+        if (err) throw err;
+        console.log(`Database updated
+      =============================`);
+        promptUser();
       });
-      console.log('Database updated');
     });
-  console.log(`
-    ==================================
-    `);
-  promptUser();
 }
 
 async function updateRole() {
@@ -250,16 +238,15 @@ async function updateRole() {
       },
     ])
     .then((answer) => {
-      db.query(`UPDATE employees SET role_id = ? WHERE employee_id = ?`, {
-        role_id: answer.roleID,
-        employee_id: answer.empID,
+      const sql = `UPDATE employees SET role_id = ? WHERE id = ?`;
+      const params = [answer.roleID, answer.empID];
+      db.query(sql, params, (err) => {
+        if (err) throw err;
+        console.log(`Database updated
+      =============================`);
+        promptUser();
       });
-      console.log('Database updated');
-    }),
-    console.log(`
-    ==================================
-    `),
-    promptUser();
+    });
 }
 
 function exit() {
