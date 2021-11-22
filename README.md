@@ -2,8 +2,9 @@
 
 ## Purpose
 
-A command-line application that utilizes the MySQL database to organize employees and related data. 
-*Roles and departments can vary from company to company.
+A command-line application that utilizes the MySQL database to organize employees and related data.
+
+*Roles and departments can vary from company to company.*
 
 ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
 
