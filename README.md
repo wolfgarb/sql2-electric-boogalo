@@ -22,7 +22,8 @@ The full walk-through video can be found [here!](https://youtu.be/Cqo0q_SZaCA)
 
 _This project requires Node.js and MySQL_
 
-[How to install](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+[How to install Node](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+
 [MySQL docs](https://dev.mysql.com/doc/refman/8.0/en/) for reference to the latest version
 
 After you have installed Node, navigate to the directory you would like to use using the CLI and then clone this repository:
