@@ -1,8 +1,11 @@
+const { connect } = require('http2');
 const inquirer = require('inquirer');
-// const table = require('console.table');
+const { Connection } = require('mysql2');
 const mysql = require('mysql2');
-// const express = require('express');
 require('dotenv').config();
+
+// const table = require('console.table');
+// const express = require('express');
 
 const PORT = process.env.PORT || 3305;
 
@@ -24,7 +27,30 @@ db.connect((err) => {
   ================================
   Welcome to the employee tracker!
   ================================
-  `);
+                                      __________
+                           ________|          |________
+                          |       /   ||||||   \       |
+                          |     ,'              '.     |
+                          |   ,'                  '.   |
+                          | ,'   ||||||||||||||||   '. |
+                          ,'  /____________________\  '.
+                         /______________________________\
+                        |                                |
+                        |                                |
+                        |                                |
+                        |________________________________|
+                          |____________________------__|
+
+              ,----------------------------------------------------,
+              | [][][][][]  [][][][][]  [][][][]  [][__]  [][][][] |
+              |                                                    |
+              |  [][][][][][][][][][][][][][_]    [][][]  [][][][] |
+              |  [_][][][][][][][][][][][][][ |   [][][]  [][][][] |
+              | [][_][][][][][][][][][][][][]||     []    [][][][] |
+              | [__][][][][][][][][][][][][__]    [][][]  [][][]|| |
+              |   [__][________________][__]              [__][]|| |
+              '----------------------------------------------------'
+`);
   promptUser();
 });
 
@@ -84,7 +110,7 @@ function viewDeps() {
     if (err) throw err;
     console.table(data);
   });
-  // how to format table to avoid it overlapping
+  // how to format table to avoid it overlapping? promptUser is commented out for now.
   //   promptUser();
 }
 
@@ -210,4 +236,21 @@ async function addEmp() {
 
 async function updateRole() {
   // update role
+}
+
+function exit() {
+  console.log(`
+             |                              ____.......__
+             |\      .'           _.--""''''             ''''--._
+             | \   .'/      ..--''                             .-'
+      .._    |  \.' /  ..-''                                .-'
+       '.''"-:  '  .-''                                  .-'
+         '.             __...----""""""""""--..           \
+         -         ..-''                       ''""-._     \
+       .'  _.      \                                  '"-   \
+      _.-'' |  /-.  \                                    '-. \
+            | /   '. \                                      '.\
+            |/      '-\                                       '.
+            |
+`);
 }
