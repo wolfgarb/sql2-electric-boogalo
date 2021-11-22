@@ -10,9 +10,9 @@ A command-line application that utilizes the MySQL database to organize employee
 
 Here is how the application appears and functions.
 
-<img src='assets\sql-preview.gif' />
+<img src='assets\sql-preview2.gif' />
 
-The full walk-through video can be found [here!]()
+The full walk-through video can be found [here!](https://youtu.be/Cqo0q_SZaCA)
 
 ## Installation
 

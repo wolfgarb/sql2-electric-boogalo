@@ -99,9 +99,10 @@ function viewDeps() {
   db.query(sql, (err, data) => {
     if (err) throw err;
     console.table(data);
+    console.log(`
+    =========================`);
+    promptUser();
   });
-  // how to format table to avoid it overlapping? promptUser is commented out for now.
-  //   promptUser();
 }
 
 function viewRoles() {
@@ -109,8 +110,10 @@ function viewRoles() {
   db.query(sql, (err, data) => {
     if (err) throw err;
     console.table(data);
+    console.log(`
+    =========================`);
+    promptUser();
   });
-  //   promptUser();
 }
 
 function viewEmps() {
@@ -118,8 +121,10 @@ function viewEmps() {
   db.query(sql, (err, data) => {
     if (err) throw err;
     console.table(data);
+    console.log(`
+    =========================`);
+    promptUser();
   });
-  //   promptUser();
 }
 
 async function addDep() {
