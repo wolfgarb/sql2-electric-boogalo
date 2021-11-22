@@ -21,7 +21,7 @@ _This project requires Node.js and MySQL_
 [How to install](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 [MySQL docs](https://dev.mysql.com/doc/refman/8.0/en/) for reference to the latest version
 
-After you have installed Node, navigate to the directory you would like to use using the CLI and then clone this repository =>
+After you have installed Node, navigate to the directory you would like to use using the CLI and then clone this repository:
 
 ```bash
 git clone git@github.com:wolfgarb/sql2-electric-boogaloo.git
