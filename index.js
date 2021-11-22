@@ -154,7 +154,6 @@ async function addDep() {
 }
 
 async function addRole() {
-  // let sql = `SELECT FROM roles`
   // name, salary, department
   await inquirer
     .prompt([
@@ -236,6 +235,31 @@ async function addEmp() {
 
 async function updateRole() {
   // update role
+  await inquirer
+    .prompt([
+      {
+        type: 'input',
+        name: 'empID',
+        message:
+          'Enter the ID number of the employee you would like to update:',
+      },
+      {
+        type: 'input',
+        name: 'roleID',
+        message: 'Enter the ID of the new role for this employee: ',
+      },
+    ])
+    .then((answer) => {
+      db.query(`UPDATE employees SET role_id = ? WHERE employee_id = ?`, {
+        role_id: answer.roleID,
+        employee_id: answer.empID,
+      });
+      console.log('Database updated');
+    }),
+    console.log(`
+    ==================================
+    `),
+    promptUser();
 }
 
 function exit() {
