@@ -54,8 +54,8 @@ db.connect((err) => {
   promptUser();
 });
 
-async function promptUser() {
-  await inquirer
+function promptUser() {
+  inquirer
     .prompt([
       {
         type: 'list',
